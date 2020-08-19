@@ -10,4 +10,8 @@ return [
     "list_task" => "List Tasks",
     "btn_delete" => "Delete",
     "create_task_failed" => "Create User Failed!",
+    "lang" => [
+        "en" => "English",
+        "vi" => "Tiếng Việt",
+    ],
 ];

@@ -10,6 +10,13 @@
     <body>
         <div class="container">
             <nav class="navbar navbar-default">
+                <form action="{{ route('switchLang') }}" class="form-lang" method="POST">
+                    @csrf
+                    <select name="locale" onchange='this.form.submit();'>
+                        <option value="en">{{ trans('contents.lang.en') }}</option>
+                        <option value="vi"{{ Lang::locale() === 'vi' ? 'selected' : '' }}>{{ trans('contents.lang.vi') }}</option>
+                    </select>
+                </form>
             </nav>
         </div>
 
