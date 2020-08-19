@@ -1,0 +1,17 @@
+{
+  "name": "quicktask",
+  "description": "",
+  "main": "",
+  "authors": [
+    "sondth-1037 <duong.tran.hoai.son@sun-asterisk.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sondth-1037/quicktask",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
