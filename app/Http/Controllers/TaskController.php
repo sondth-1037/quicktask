@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskPost;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TaskController extends Controller
 {
@@ -13,8 +17,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
-        return view('tasks');
+        $users = User::all();
+        $tasks = Task::with('user')->orderBy('created_at', 'asc')->get();
+
+        return view('tasks', ['users' => $users, 'tasks' => $tasks]);
     }
 
     /**
@@ -33,9 +39,14 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreTaskPost $request)
+    {   
+        $task = Task::create($request->all());
+        if ($task) {
+            return redirect()->route('tasks.index');
+        } else {
+            return redirect()->back()->withErrors(trans('contents.create_task_failed'));
+        }
     }
 
     /**
@@ -80,6 +91,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('tasks.index');  
     }
 }
