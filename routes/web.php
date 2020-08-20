@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'localization'], function () {
+    Route::resource('tasks', 'TaskController');
+});
 
-Route::resource('tasks', 'TaskController');
+Route::post('lang', 'LangController@postLang')->name('switchLang');

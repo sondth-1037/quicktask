@@ -10,4 +10,8 @@ return [
     "list_task" => "Danh sách Task",
     "btn_delete" => "Xóa",
     "create_task_failed" => "Tạo task thất bại",
+    "lang" => [
+        "en" => "English",
+        "vi" => "Tiếng Việt",
+    ],
 ];
